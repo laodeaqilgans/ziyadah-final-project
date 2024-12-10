@@ -4,13 +4,14 @@
 
 @section('content')
 <div class="container">
-    <h1 class="mb-4 text-center">Daftar Santri</h1>
+    <h1 class="mb-5 mt-5 text-center">Daftar Santri</h1>
 
-    <div class="mb-3 text-end">
-        <a href="{{ route('santri.create') }}" class="btn btn-primary">
-            Tambah Santri
-        </a>
-    </div>
+    <div class="container my-5">
+        <!-- Card Gambar di atas Tabel -->
+        <div class="card mb-4">
+            <img src="{{ asset('images/alquran.jpg') }}" class="card-img-top" alt="Ziyadah Image"
+                style="height: 210px; object-fit: cover;">
+        </div>
 
     <div class="card">
         <div class="card-header">
@@ -21,7 +22,7 @@
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th>Nama Santri</th>
+                            <th>Data Santri</th>
                             <th>NIK</th>
                             <th>Kamar</th>
                             <th>Kelas</th>
@@ -168,6 +169,12 @@
             <!-- Pagination -->
             <div class="mt-3">
                 {{ $santris->links() }}
+            </div>
+
+            <div class="mb-3 text-end">
+                <a href="{{ route('santri.create') }}" class="btn btn-primary">
+                    Tambah Santri
+                </a>
             </div>
         </div>
     </div>

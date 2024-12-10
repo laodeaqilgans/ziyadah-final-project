@@ -10,9 +10,11 @@
                 style="height: 210px; object-fit: cover;">
             <div class="card-body">
                 <h5 class="card-title">Pentingnya Melakukan Ziyadah</h5>
-                <p class="card-text">Ziyadah adalah aktivitas tambahan yang sangat bermanfaat untuk meningkatkan kualitas
-                    ibadah dan pemahaman agama. Setiap langkah dalam aktivitas ini memiliki nilai yang besar, baik untuk
-                    diri sendiri maupun untuk orang lain.</p>
+                <p class="card-text">Bagi seorang santri, Ziyadah atau setoran hafalan merupakan kegiatan yang sangat penting
+                    dalam menjaga kualitas hafalan Al-Qur'an. Setiap hari, santri melakukan Ziyadah untuk memastikan hafalan
+                    mereka tetap terjaga dan semakin kuat. Selain sebagai bagian dari pendidikan agama, Ziyadah juga
+                    merupakan ibadah yang mendekatkan diri kepada Allah. Aktivitas ini memberikan kesempatan bagi santri
+                    untuk terus memperdalam ilmu agama dan menjadi pribadi yang lebih baik.</p>
             </div>
         </div>
 
@@ -38,8 +40,9 @@
                             @foreach ($ziyadah as $ziyadah_item)
                                 <tr>
                                     <!-- Mengakses nama santri dari relasi -->
-                                    <td>{{ $ziyadah_item->santri->nama_santri }}</td> 
-                                    <td>{{ $ziyadah_item->juz }} - {{ $ziyadah_item->surat }} ({{ $ziyadah_item->ayat }})</td>
+                                    <td>{{ $ziyadah_item->santri->nama_santri }}</td>
+                                    <td>{{ $ziyadah_item->juz }} - {{ $ziyadah_item->surat }} ({{ $ziyadah_item->ayat }})
+                                    </td>
                                     <td>{{ Str::limit($ziyadah_item->catatan, 50) }}</td>
                                     <td>{{ $ziyadah_item->tanggal_ziyadah }}</td>
                                     <td>

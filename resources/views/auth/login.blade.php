@@ -17,7 +17,7 @@
 
                             <!-- Welcome Text -->
                             <div class="authent-text text-center mb-4">
-                                <p class="fw-bold fs-4">Welcome to Circl</p>
+                                <p class="fw-bold fs-4">Welcome to Ziyadah</p>
                                 <p>Please sign in to your account.</p>
                             </div>
 

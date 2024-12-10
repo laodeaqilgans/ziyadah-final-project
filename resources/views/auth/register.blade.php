@@ -15,7 +15,7 @@
 
                         <!-- Teks Sambutan -->
                         <div class="authent-text text-center">
-                            <p class="fw-bold fs-4">Welcome to Circl</p>
+                            <p class="fw-bold fs-4">Welcome to Ziyadah</p>
                             <p>Enter your details to create your account</p>
                         </div>
 
