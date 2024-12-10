@@ -1,0 +1,386 @@
+/* Global Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f7fc;
+    margin: 0;
+    padding: 0;
+}
+
+/* Styling untuk tombol */
+.btn-lg {
+    font-size: 1rem;
+    padding: 12px 20px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Tombol Primary dan Info */
+.btn-primary,
+.btn-info {
+    padding: 12px 12px;
+    border-radius: 8px;
+}
+
+/* Tombol Primary - Warna biru */
+.btn-primary {
+    background-color: #3b6cc5;
+    border-color: #3b6cc5;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #2a4a8c;
+    border-color: #2a4a8c;
+    transform: scale(1);
+}
+
+/* Tombol Info - Warna abu-abu */
+.btn-info {
+    background-color: #6c757d;
+    border-color: #6c757d;
+    color: white;
+}
+
+.btn-info:hover {
+    background-color: #5a6268;
+    border-color: #5a6268;
+    transform: scale(1);
+}
+
+/* Styling untuk link (tanpa underline) */
+a, .btn-link {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Card Styling */
+.card {
+    background-color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.card:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+.card-header {
+    background-color: #3b6cc5;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.25rem;
+    padding: 15px 0;
+}
+
+/* Input dan form control */
+.form-control, .form-floating input {
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 12px;
+    font-size: 1rem;
+}
+
+textarea.form-control {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* Styling untuk login form */
+.login-form-2 .btn-info {
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+    color: white;
+}
+
+.login-form-2 .btn-info:hover {
+    background-color: #138496;
+    border-color: #138496;
+}
+
+/* Styling tombol eye password */
+#togglePassword {
+    transition: none;
+}
+
+#togglePassword:hover {
+    transform: none;
+}
+
+/* Styling untuk layout responsif */
+@media (max-width: 768px) {
+    .card {
+        margin-top: 20px;
+    }
+
+    .card-header {
+        font-size: 1.1rem;
+    }
+
+    .btn-primary {
+        font-size: 0.9rem;
+    }
+
+    .btn-info {
+        font-size: 0.9rem;
+    }
+
+    .login-form-1 .btn-primary,
+    .login-form-2 .btn-primary {
+        font-size: 0.9rem;
+        padding: 12px 12px;
+        border-radius: 8px;
+    }
+
+    .login-form-1 .btn-info,
+    .login-form-2 .btn-info {
+        font-size: 0.9rem;
+        padding: 12px 12px;
+        border-radius: 8px;
+    }
+
+    .form-floating input {
+        font-size: 1rem;
+        padding: 12px;
+    }
+
+    .btn-lg {
+        font-size: 1rem;
+        padding: 12px 20px;
+        border-radius: 8px;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+}
+
+/* Styling untuk logo aplikasi */
+.authent-logo img {
+    max-width: 90px;
+}
+
+/* Styling untuk form */
+.login-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+}
+
+.authent-text p {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.authent-reg {
+    margin-top: 20px;
+}
+
+.d-grid {
+    display: grid;
+    gap: 10px;
+}
+
+/* Styling untuk Eye Icon di Password Input */
+.position-relative {
+    position: relative;
+}
+
+#togglePassword {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 18px;
+}
+
+/* Styling untuk halaman login */
+.login-box-container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.login-form-2 .d-flex {
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.login-form-2 .d-flex a {
+    color: #007bff;
+}
+
+/* Responsif pada tabel */
+.table-bordered th, .table-bordered td {
+    text-align: center;
+    padding: 8px;
+}
+
+.table-responsive {
+    overflow-x: auto;
+}
+
+/* Styling untuk checkbox Remember Me */
+.form-check {
+    font-size: 0.9rem;
+}
+
+/* Menghapus garis bawah pada tautan di halaman login */
+.btn-link, a {
+    text-decoration: none;
+}
+
+/* Menghilangkan efek hover pada card */
+.card:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+/* Styling untuk card header */
+.card-header {
+    background-color: #3b6cc5;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.25rem;
+    padding: 15px 0;
+}
+
+/* Responsive Styling untuk form login */
+@media (max-width: 768px) {
+    .card {
+        margin-top: 20px;
+    }
+    .card-header {
+        font-size: 1.1rem;
+    }
+    .btn-primary {
+        font-size: 0.9rem;
+    }
+}
+
+.navbar-brand-1 {
+    font-family: "Arial", sans-serif; /* Font standar dan mudah dibaca */
+    font-size: 1.4rem !important; /* Ukuran font lebih besar */
+    font-weight: 600; /* Bobot font sedang */
+    color: #333333; /* Warna abu-abu gelap, lebih netral */
+    text-transform: uppercase; /* Semua huruf kapital */
+    text-decoration: none; /* Menghapus garis bawah */
+}
+
+/* Styling pada saat hover (opsional, jika tidak ingin ada hover bisa dihapus) */
+.navbar-brand-1:hover { 
+    color: #000000; /* Warna hitam pada hover */
+    text-decoration: none; /* Tidak ada garis bawah saat hover */
+}
+
+/* Styling logo (menyesuaikan posisi) */
+.navbar-nav {
+    display: flex;
+    align-items: center;
+}
+
+/* Atur jarak antara logo dan tombol toggle */
+.navbar-nav li:first-child {
+    margin-right: 5px; /* Menambahkan jarak antara logo dan tombol sidebar */
+}
+
+/* Styling untuk tombol sidebar toggle */
+#sidebar-toggle {
+    font-size: 1.5rem; /* Ukuran ikon toggle */
+    color: #333333;
+}
+
+/* Styling untuk tombol sidebar toggle */
+#sidebar-toggle {
+    font-size: 1.5rem; /* Ukuran ikon toggle */
+    color: #333333;
+}
+
+
+
+@media (max-width: 768px) {
+    .navbar-nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        margin-top: 10px;
+    }
+
+    .navbar-nav a {
+        font-size: 1.1rem;
+        padding: 12px 20px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .navbar-collapse {
+        text-align: center;
+    }
+
+    .navbar-brand {
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+    }
+
+    .navbar-toggler {
+        font-size: 1.5rem;
+    }
+}
+
+/* Custom CSS untuk modal kecil */
+#editModal .modal-dialog {
+    max-width: 400px; /* Atur lebar maksimal sesuai kebutuhan */
+    margin: 1.75rem auto; /* Posisikan di tengah */
+}
+
+#editModal .modal-content {
+    padding: 10px; /* Mengurangi padding di dalam modal */
+}
+
+/* Styling tombol Detail yang lebih sederhana */
+.btn-detail {
+    font-size: 1rem;
+    padding: 8px 16px;
+    color: #007bff; /* Warna teks biru */
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.btn-detail:hover {
+    background-color: #e9ecef; /* Warna latar belakang sedikit lebih gelap saat hover */
+    border-color: #007bff; /* Warna border menjadi biru saat hover */
+}
+
+.btn-detail:focus {
+    outline: none; /* Menghilangkan outline */
+}
+
+.profile-image {
+    width: 100px; /* Atur lebar gambar */
+    height: 100px; /* Atur tinggi gambar */
+    object-fit: cover; /* Memastikan gambar tidak terdistorsi */
+    border-radius: 50%;  
+}
+
+.profile-placeholder {
+    width: 100px; /* Atur lebar placeholder */
+    height: 100px; /* Atur tinggi placeholder */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%; 
+}
+
+ 
