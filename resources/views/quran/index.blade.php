@@ -8,9 +8,11 @@
         <!-- Card Gambar di atas Tabel -->
         <div class="card mb-4">
             <img src="{{ asset('images/alquran.jpg') }}" class="card-img-top" alt="Ziyadah Image"
-                style="height: 210px; object-fit: cover;">
-            <div class="card-body">
-                <h5 class="card-title">Pentingnya Membaca Al-Qur'an</h5>
+                style="height: 220px; object-fit: cover;">
+            <div class="card-body d-flex flex-column">
+                <h5 class="card-title">
+                    Pentingnya Membaca Al-Qur'an
+                </h5>
                 <p class="card-text">Sebagai seorang Muslim, membaca Al-Qur'an adalah kewajiban dan anugerah yang sangat
                     besar. Setiap huruf yang kita baca tidak hanya memberikan pahala, tetapi juga menjadi petunjuk hidup
                     yang membimbing kita dalam menjalani kehidupan yang penuh berkah. Al-Qur'an mengajarkan kita tentang
@@ -30,7 +32,7 @@
                 @foreach ($surahs as $surah)
                     <div class="col-md-6 col-lg-4 mb-4">
                         <div class="card h-100">
-                            <div class="card-body">
+                            <div class="card-body d-flex flex-column">
                                 <div class="d-flex justify-content-between align-items-start mb-3">
                                     <h5 class="card-title">
                                         {{ $surah['namaLatin'] }}
@@ -57,7 +59,8 @@
                                     </div>
                                 @endif
 
-                                <div class="d-flex justify-content-between">
+                                <!-- Tombol di bawah card -->
+                                <div class="d-flex justify-content-between mt-auto">
                                     <a href="{{ route('quran.surah', $surah['nomor']) }}" class="btn btn-primary">
                                         Baca Surah
                                     </a>
@@ -90,6 +93,20 @@
         .badge {
             font-size: 1rem;
             padding: 0.5rem 1rem;
+        }
+
+        .card-body {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .d-flex {
+            display: flex;
+        }
+
+        .mt-auto {
+            margin-top: auto;
         }
     </style>
 @endsection

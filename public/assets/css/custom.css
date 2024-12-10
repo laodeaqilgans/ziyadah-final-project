@@ -26,6 +26,10 @@ body {
     background-color: #3b6cc5;
     border-color: #3b6cc5;
     color: white;
+    padding: 8px 16px; /* Mengurangi padding untuk tombol lebih kecil */
+    font-size: 1rem;  /* Mengurangi ukuran font tombol */
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .btn-primary:hover {
@@ -309,8 +313,6 @@ textarea.form-control {
     color: #333333;
 }
 
-
-
 @media (max-width: 768px) {
     .navbar-nav {
         flex-direction: column;
@@ -382,5 +384,3 @@ textarea.form-control {
     align-items: center;
     border-radius: 50%; 
 }
-
- 

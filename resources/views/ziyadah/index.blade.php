@@ -1,13 +1,14 @@
 @extends('template.template') <!-- Menggunakan template utama -->
 
 @section('content')
+    <h1 class="mb-5 mt-5 text-center">Daftar Ziyadah</h1>
+
     <div class="container my-5">
-        <h1 class="mb-4 text-center">Daftar Ziyadah</h1>
 
         <!-- Card Gambar di atas Tabel -->
         <div class="card mb-4">
             <img src="{{ asset('images/card.jpg') }}" class="card-img-top" alt="Ziyadah Image"
-                style="height: 210px; object-fit: cover;">
+                style="height: 220px; object-fit: cover; ">
             <div class="card-body">
                 <h5 class="card-title">Pentingnya Melakukan Ziyadah</h5>
                 <p class="card-text">Bagi seorang santri, Ziyadah atau setoran hafalan merupakan kegiatan yang sangat penting
