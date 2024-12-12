@@ -9,7 +9,7 @@
         <div class="card mb-4">
             <img src="{{ asset('images/alquran.jpg') }}" class="card-img-top" alt="Ziyadah Image"
                 style="height: 220px; object-fit: cover;">
-            <div class="card-body d-flex flex-column">
+            <div class="card-body">
                 <h5 class="card-title">
                     Pentingnya Membaca Al-Qur'an
                 </h5>
@@ -31,12 +31,12 @@
             <div class="row">
                 @foreach ($surahs as $surah)
                     <div class="col-md-6 col-lg-4 mb-4">
-                        <div class="card h-100">
+                        <div class="card h-100 shadow-sm border-0 rounded">
                             <div class="card-body d-flex flex-column">
                                 <div class="d-flex justify-content-between align-items-start mb-3">
                                     <h5 class="card-title">
                                         {{ $surah['namaLatin'] }}
-                                        <small class="d-block text-muted">{{ $surah['nama'] }}</small>
+                                        <medium class="d-block text-muted">{{ $surah['nama'] }}</medium>
                                     </h5>
                                     <span class="badge bg-primary">{{ $surah['nomor'] }}</span>
                                 </div>
@@ -60,12 +60,12 @@
                                 @endif
 
                                 <!-- Tombol di bawah card -->
-                                <div class="d-flex justify-content-between mt-auto">
-                                    <a href="{{ route('quran.surah', $surah['nomor']) }}" class="btn btn-primary">
+                                <div class="d-flex justify-content-between mt-auto pt-3">
+                                    <a href="{{ route('quran.surah', $surah['nomor']) }}" class="btn btn-primary rounded-pill px-4 py-2">
                                         Baca Surah
                                     </a>
                                     <a href="{{ route('quran.tafsir', $surah['nomor']) }}"
-                                        class="btn btn-outline-secondary">
+                                        class="btn btn-outline-secondary rounded-pill px-4 py-2">
                                         Tafsir
                                     </a>
                                 </div>
@@ -79,11 +79,11 @@
 
     <style>
         .card {
-            transition: transform 0.2s;
+            transition: transform 0.3s ease;
         }
 
         .card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
         }
 
         .audio-player audio {
@@ -99,6 +99,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            padding: 1.5rem;
         }
 
         .d-flex {
@@ -107,6 +108,33 @@
 
         .mt-auto {
             margin-top: auto;
+        }
+
+        .rounded-pill {
+            border-radius: 50rem;
+        }
+
+        .shadow-sm {
+            box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+        }
+
+        .card-title small {
+            font-size: 0.9rem;
+        }
+
+        .btn {
+            font-size: 1rem;
+        }
+
+        @media (max-width: 767px) {
+            .card-body {
+                padding: 1rem;
+            }
+
+            .btn {
+                font-size: 0.9rem;
+                padding: 0.75rem;
+            }
         }
     </style>
 @endsection
