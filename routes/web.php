@@ -55,5 +55,3 @@ Route::prefix('api/quran')->group(function () {
     Route::get('/verse/{surahNumber}/{verseNumber}', [QuranController::class, 'apiGetVerse']);
     Route::get('/tafsir/{number}', [QuranController::class, 'apiGetTafsir']);
 });
-
-Route::get('/api/surahs/juz/{juz}', [QuranController::class, 'getSurahsByJuz']);

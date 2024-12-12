@@ -92,6 +92,7 @@
                                                             aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body">
+                                                        <!-- Form Fields here -->
                                                         <div class="row mb-3">
                                                             <div class="col-md-6">
                                                                 <div class="form-group">
@@ -115,18 +116,18 @@
                                                         <div class="row mb-3">
                                                             <div class="col-md-6">
                                                                 <div class="form-group">
-                                                                    <label for="kamar" class="form-label">Kamar</label>
-                                                                    <input type="text" class="form-control"
-                                                                        id="kamar" name="kamar"
-                                                                        value="{{ $santri->kamar }}" required>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <div class="form-group">
                                                                     <label for="kelas" class="form-label">Kelas</label>
                                                                     <input type="text" class="form-control"
                                                                         id="kelas" name="kelas"
                                                                         value="{{ $santri->kelas }}" required>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <label for="kamar" class="form-label">Kamar</label>
+                                                                    <input type="text" class="form-control"
+                                                                        id="kamar" name="kamar"
+                                                                        value="{{ $santri->kamar }}" required>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -138,7 +139,7 @@
                                                                         Lahir</label>
                                                                     <input type="date" class="form-control"
                                                                         id="tanggal_lahir" name="tanggal_lahir"
-                                                                        value="{{ $santri->tanggal_lahir }}">
+                                                                        value="{{ $santri->tanggal_lahir }}"/>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6">
@@ -147,7 +148,7 @@
                                                                         Telepon</label>
                                                                     <input type="text" class="form-control"
                                                                         id="nomor_telepon" name="nomor_telepon"
-                                                                        value="{{ $santri->nomor_telepon }}">
+                                                                        value="{{ $santri->nomor_telepon }}"/>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -181,22 +182,47 @@
                                                         </div>
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <!-- Tombol Hapus -->
-                                                        <form action="{{ route('santri.destroy', $santri->id) }}"
-                                                            method="POST" style="display:inline;">
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button type="submit"
-                                                                class="btn btn-danger inter-font btn-hapus"
-                                                                onclick="return confirm('Apakah Anda yakin ingin menghapus santri ini?');">
-                                                                <i class="fas fa-trash"></i> Hapus
-                                                            </button>
-                                                        </form>
-
+                                                        <!-- Tombol Simpan Perubahan -->
                                                         <button type="submit" class="btn btn-primary">Simpan
                                                             Perubahan</button>
+                                                        
+
+                                                        <!-- Tombol Hapus -->
+                                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                                            data-bs-target="#deleteSantriModal{{ $santri->id }}">
+                                                            <i class="fas fa-trash"></i> Hapus
+                                                        </button>
                                                     </div>
                                                 </form>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Delete Confirmation Modal -->
+                                    <div class="modal fade" id="deleteSantriModal{{ $santri->id }}" tabindex="-1"
+                                        aria-labelledby="deleteSantriModalLabel{{ $santri->id }}" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content modal-delete">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="deleteSantriModalLabel{{ $santri->id }}">Konfirmasi Hapus Santri</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Apakah Anda yakin ingin menghapus data santri ini?
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                                                    
+                                                    <!-- Form Delete -->
+                                                    <form action="{{ route('santri.destroy', $santri->id) }}" method="POST" style="display:inline;">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-danger">
+                                                            <i class="fas fa-trash"></i> Hapus
+                                                        </button>
+                                                    </form>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -221,33 +247,34 @@
                 </div>
             </div>
         </div>
+    </div>
 
-        @push('scripts')
-            <script>
-                // Handle form submission feedback
-                const editForms = document.querySelectorAll('form');
-                editForms.forEach(form => {
-                    form.addEventListener('submit', function() {
-                        // Disable submit button to prevent double submission
-                        const submitBtn = this.querySelector('button[type="submit"]');
-                        if (submitBtn) {
-                            submitBtn.disabled = true;
-                            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Menyimpan...';
-                        }
-                    });
+    @push('scripts')
+        <script>
+            // Handle form submission feedback
+            const editForms = document.querySelectorAll('form');
+            editForms.forEach(form => {
+                form.addEventListener('submit', function() {
+                    // Disable submit button to prevent double submission
+                    const submitBtn = this.querySelector('button[type="submit"]');
+                    if (submitBtn) {
+                        submitBtn.disabled = true;
+                        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Menyimpan...';
+                    }
                 });
+            });
 
-                // Show filename in file input
-                const fileInputs = document.querySelectorAll('input[type="file"]');
-                fileInputs.forEach(input => {
-                    input.addEventListener('change', function(e) {
-                        const fileName = e.target.files[0]?.name;
-                        const label = this.nextElementSibling;
-                        if (label && label.classList.contains('custom-file-label')) {
-                            label.textContent = fileName || 'Pilih file';
-                        }
-                    });
+            // Show filename in file input
+            const fileInputs = document.querySelectorAll('input[type="file"]');
+            fileInputs.forEach(input => {
+                input.addEventListener('change', function(e) {
+                    const fileName = e.target.files[0]?.name;
+                    const label = this.nextElementSibling;
+                    if (label && label.classList.contains('custom-file-label')) {
+                        label.textContent = fileName || 'Pilih file';
+                    }
                 });
-            </script>
-        @endpush
-    @endsection
+            });
+        </script>
+    @endpush
+@endsection

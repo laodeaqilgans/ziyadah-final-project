@@ -32,21 +32,14 @@
                             <div class="col-md-4 mb-4">
                                 <div class="form-group">
                                     <label for="juz" class="form-label fw-bold mb-3">Juz</label>
-                                    <select class="form-select" id="juz" name="juz" required>
-                                        <option value="" disabled selected>Pilih Juz</option>
-                                        @for ($i = 1; $i <= 30; $i++)
-                                            <option value="{{ $i }}">Juz {{ $i }}</option>
-                                        @endfor
-                                    </select>
+                                    <input type="number" class="form-control" id="juz" name="juz" min="1" max="30" required>
                                 </div>
                             </div>
 
                             <div class="col-md-4 mb-4">
                                 <div class="form-group">
                                     <label for="surat" class="form-label fw-bold mb-3">Surat</label>
-                                    <select class="form-select" id="surat" name="surat" required>
-                                        <option value="" disabled selected>Pilih Surat</option>
-                                    </select>
+                                    <input type="text" class="form-control" id="surat" name="surat" required>
                                 </div>
                             </div>
 

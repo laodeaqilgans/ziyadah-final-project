@@ -73,14 +73,16 @@ class ZiyadahController extends Controller
     // Mengupdate data Ziyadah
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'santri_id' => 'required|exists:santris,id',  // Pastikan santri_id valid
-            'juz' => 'required|integer',
-            'surat' => 'required|string|max:255',
-            'ayat' => 'required|string',
-            'catatan' => 'nullable|string',
-            'tanggal_ziyadah' => 'required|date',
-        ]);
+        // $request->validate([
+        //     'santri_id' => 'required',  // Pastikan santri_id valid
+        //     'juz' => 'required|integer',
+        //     'surat' => 'required|string|max:255',
+        //     'ayat' => 'required|string',
+        //     'catatan' => 'nullable|string',
+        //     'tanggal_ziyadah' => 'required|date',
+        // ]);
+
+        $input = $request -> all();
 
         $ziyadah = Ziyadah::findOrFail($id);
         $ziyadah->update([
@@ -93,6 +95,7 @@ class ZiyadahController extends Controller
         ]);
 
         return redirect()->route('ziyadah.index');
+        // return $input;
     }
 
     // Menghapus data Ziyadah

@@ -78,7 +78,7 @@ class SantriController extends Controller
     // Memperbarui data santri
     public function update(Request $request, $id)
     {
-        // Validasi input
+        //Validasi input
         $request->validate([
             'nama_santri' => 'required|string|max:255',
             'nik' => 'required|string|unique:santris,nik,' . $id . '|max:255', // Validasi NIK

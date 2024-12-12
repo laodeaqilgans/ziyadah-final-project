@@ -5,14 +5,25 @@
 @section('content')
     <div class="container">
         <div class="text-center mb-4 mt-4">
-            <h1 class="h3 mb-3 text-gray-800">Detail Ziyadah</h1>
+            <h1 class="h3 mb-5 mt-4 text-gray-800">Detail Ziyadah</h1>
         </div>
 
-        <div class="d-flex justify-content-end">            
+        <div class="d-flex justify-content-between mb-4 mt-7">
             <a href="{{ route('ziyadah.index') }}" class="btn btn-outline-secondary">
                 <i class="fas fa-arrow-left me-2"></i>Kembali
             </a>
-        </div>        
+
+            <!-- Hapus Button -->
+            <form action="{{ route('ziyadah.destroy', $ziyadah->id) }}" method="POST"
+                onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?');">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-outline-danger">
+                    <i class="fas fa-trash me-2"></i>Hapus
+                </button>
+            </form>
+        </div>
+
 
         <div class="row g-4">
             <!-- Informasi Santri -->
@@ -93,7 +104,7 @@
                             <div class="col-sm-4">
                                 <div class="stat-card">
                                     <h6 class="text-dark mb-2">Ayat</h6>
-                                    <div class="stat-value">{{ $ziyadah-> ayat }}</div>
+                                    <div class="stat-value">{{ $ziyadah->ayat }}</div>
                                 </div>
                             </div>
                         </div>
@@ -131,7 +142,8 @@
                             <div class="mb-3">
                                 <label class="form-label">Santri</label>
                                 <select class="form-select" name="santri_id" required>
-                                    <option value="{{ $ziyadah->santri->id }}">{{ $ziyadah->santri->nama_santri }}</option>
+                                    <option value="{{ $ziyadah->santri->id }}">{{ $ziyadah->santri->nama_santri }}
+                                    </option>
                                 </select>
                             </div>
 
@@ -139,19 +151,29 @@
                                 <div class="col-sm-4">
                                     <div class="mb-3">
                                         <label class="form-label">Juz</label>
-                                        <input type="text" class="form-control" name="juz" value="{{ $ziyadah->juz }}" required>
+                                        <input type="text" class="form-control" name="juz"
+                                            value="{{ $ziyadah->juz }}" required>
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="mb-3">
                                         <label class="form-label">Surat</label>
-                                        <input type="text" class="form-control" name="surat" value="{{ $ziyadah->surat }}" required>
+                                        <input type="text" class="form-control" name="surat"
+                                            value="{{ $ziyadah->surat }}" required>
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="mb-3">
                                         <label class="form-label">Ayat</label>
-                                        <input type="text" class="form-control" name="ayat" value="{{ $ziyadah->ayat }}" required>
+                                        <input type="text" class="form-control" name="ayat"
+                                            value="{{ $ziyadah->ayat }}" required>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="mb-3">
+                                        <label class="form-label">Tanggal Ziyadah</label>
+                                        <input type="text" class="form-control" name="tanggal_ziyadah"
+                                            value="{{ $ziyadah->tanggal_ziyadah }}" required>
                                     </div>
                                 </div>
                             </div>
@@ -162,7 +184,8 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Batal</button>
+                            <button type="button" class="btn btn-outline-secondary"
+                                data-bs-dismiss="modal">Batal</button>
                             <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
                         </div>
                     </form>
