@@ -1,5 +1,7 @@
 @extends('template.template')
 
+@section('title', 'Surat - ' . $surah['namaLatin'])
+
 @section('content')
     <div class="container my-5">
         @if (isset($error))
@@ -9,22 +11,30 @@
         @endif
 
         @if (isset($surah))
-            <div class="card mb-4">
+            <div class="d-flex justify-content-end mb-4">
+                <a href="{{ url('baca') }}" class="btn btn-secondary rounded-pill px-4 py-2"><i
+                        class="fas fa-arrow-left"></i> Kembali</a>
+                <a href="{{ url('tafsir/' . $surah['nomor']) }}" class="btn btn-info rounded-pill px-4 py-2 ms-2"><i
+                        class="fas fa-book"></i> Tafsir</a>
+            </div>
+
+
+            <div class="card mb-4 shadow-sm rounded">
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center mb-4">
                         <div>
-                            <h1 class="mb-0">{{ $surah['namaLatin'] }}</h1>
+                            <h1 class="mb-0 text-primary">{{ $surah['namaLatin'] }}</h1>
                             <h2 class="h4 text-muted">{{ $surah['nama'] }} - {{ $surah['arti'] }}</h2>
                         </div>
-                        <span class="badge bg-primary">{{ $surah['nomor'] }}</span>
+                        <span class="badge bg-primary rounded-pill py-2 px-3">{{ $surah['nomor'] }}</span>
                     </div>
 
                     <div class="mb-4">
                         <p class="lead">{!! $surah['deskripsi'] !!}</p>
                         <div class="text-muted">
                             <small>
-                                Tempat Turun: {{ $surah['tempatTurun'] }} |
-                                Jumlah Ayat: {{ $surah['jumlahAyat'] }}
+                                <i class="fas fa-map-marker-alt"></i> Tempat Turun: {{ $surah['tempatTurun'] }} |
+                                <i class="fas fa-book-open"></i> Jumlah Ayat: {{ $surah['jumlahAyat'] }}
                             </small>
                         </div>
                     </div>
@@ -60,15 +70,15 @@
                 </div>
             </div>
 
-            <div class="card">
+            <div class="card shadow-sm rounded">
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center mb-4">
                         <h3 class="card-title mb-0">Ayat-ayat</h3>
                         <div class="btn-group">
-                            <button class="btn btn-primary" id="autoPlayToggle">
+                            <button class="btn btn-primary rounded-pill" id="autoPlayToggle">
                                 <i class="fas fa-play"></i> Auto Play
                             </button>
-                            <button class="btn btn-secondary" id="stopButton" style="display: none;">
+                            <button class="btn btn-secondary rounded-pill" id="stopButton" style="display: none;">
                                 <i class="fas fa-stop"></i> Stop
                             </button>
                         </div>
@@ -77,7 +87,7 @@
                     @foreach ($surah['ayat'] as $ayat)
                         <div class="verse-container mb-4 p-3 border-bottom" data-ayat="{{ $ayat['nomorAyat'] }}">
                             <div class="d-flex justify-content-between mb-3">
-                                <span class="badge bg-secondary">{{ $ayat['nomorAyat'] }}</span>
+                                <span class="badge bg-secondary rounded-pill py-2 px-3">{{ $ayat['nomorAyat'] }}</span>
                                 <div class="arabic-text text-end" style="font-size: 2rem;">
                                     {{ $ayat['teksArab'] }}
                                 </div>
@@ -87,7 +97,7 @@
                                 {{ $ayat['teksLatin'] }}
                             </div>
 
-                            <div class="translation text-muted">
+                            <div class="translation text-muted mb-3">
                                 {{ $ayat['teksIndonesia'] }}
                             </div>
 
@@ -98,7 +108,7 @@
                                         Your browser does not support the audio element.
                                     </audio>
                                     <!-- Play Button -->
-                                    <button class="btn btn-play" data-ayat="{{ $ayat['nomorAyat'] }}">
+                                    <button class="btn btn-play rounded-circle" data-ayat="{{ $ayat['nomorAyat'] }}">
                                         <i class="fas fa-play"></i>
                                     </button>
                                 </div>
@@ -113,8 +123,8 @@
     <style>
         .verse-container {
             background-color: #fff;
-            border-radius: 8px;
-            transition: background-color 0.2s;
+            border-radius: 10px;
+            transition: background-color 0.3s;
         }
 
         .verse-container:hover {
@@ -133,77 +143,70 @@
 
         .audio-player audio {
             max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         .badge {
             font-size: 1rem;
             padding: 0.5rem 1rem;
+            border-radius: 50rem;
         }
 
-        /* Styling untuk tombol play bulat */
         .btn-play {
             background-color: #007bff;
-            /* Warna biru tombol */
             color: white;
             border: none;
             border-radius: 50%;
-            /* Membuat tombol bulat */
             padding: 10px;
-            /* Ukuran tombol */
             font-size: 16px;
-            /* Ukuran font lebih kecil */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            transition: background-color 0.2s ease;
             width: 40px;
-            /* Lebar tombol lebih kecil */
             height: 40px;
-            /* Tinggi tombol lebih kecil */
+            transition: background-color 0.2s;
         }
 
         .btn-play:hover {
             background-color: #0056b3;
-            /* Warna biru lebih gelap saat hover */
         }
 
-        .btn-play:focus {
-            outline: none;
-            /* Menghilangkan border saat tombol difokuskan */
-        }
-
-        /* Styling untuk tombol stop bulat */
         .btn-stop {
             background-color: #dc3545;
-            /* Warna merah tombol */
             color: white;
             border: none;
             border-radius: 50%;
-            /* Membuat tombol bulat */
             padding: 10px;
-            /* Ukuran tombol lebih kecil */
             font-size: 16px;
-            /* Ukuran font lebih kecil */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            transition: background-color 0.2s ease;
             width: 40px;
-            /* Lebar tombol lebih kecil */
             height: 40px;
-            /* Tinggi tombol lebih kecil */
+            transition: background-color 0.2s;
         }
 
         .btn-stop:hover {
             background-color: #c82333;
-            /* Warna merah lebih gelap saat hover */
         }
 
-        .btn-stop:focus {
-            outline: none;
-            /* Menghilangkan border saat tombol difokuskan */
+        .btn-secondary {
+            font-size: 1rem;
+            padding: 0.5rem 1rem;
+        }
+
+        .btn-group button {
+            transition: transform 0.2s;
+        }
+
+        .btn-group button:hover {
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 767px) {
+            .arabic-text {
+                font-size: 1.8rem;
+            }
+
+            .btn-group button {
+                font-size: 0.9rem;
+                padding: 0.4rem 0.8rem;
+            }
         }
     </style>
 
@@ -215,7 +218,7 @@
             const stopButton = document.getElementById('stopButton');
             let currentAudioIndex = 0;
             let isAutoPlaying = false;
-            let currentAudio = null; // Track the currently playing audio
+            let currentAudio = null;
 
             function playNextVerse() {
                 if (!isAutoPlaying) return;
@@ -223,16 +226,11 @@
                 if (currentAudioIndex < verseAudios.length) {
                     currentAudio = verseAudios[currentAudioIndex];
                     const verseContainer = document.querySelector(`[data-ayat="${currentAudio.dataset.ayat}"]`);
-
-                    // Remove playing class from all containers
                     document.querySelectorAll('.verse-container').forEach(container => {
                         container.classList.remove('playing');
                     });
 
-                    // Add playing class to current container
                     verseContainer.classList.add('playing');
-
-                    // Scroll to current verse
                     verseContainer.scrollIntoView({
                         behavior: 'smooth',
                         block: 'center'
@@ -263,12 +261,10 @@
                 autoPlayButton.style.display = 'inline-block';
                 stopButton.style.display = 'none';
 
-                // Remove playing class from all containers
                 document.querySelectorAll('.verse-container').forEach(container => {
                     container.classList.remove('playing');
                 });
 
-                // Stop all audio
                 verseAudios.forEach(audio => {
                     audio.pause();
                     audio.currentTime = 0;
@@ -278,24 +274,20 @@
             autoPlayButton.addEventListener('click', startAutoPlay);
             stopButton.addEventListener('click', stopAutoPlay);
 
-            // Event listener untuk tombol play per ayat
             playButtons.forEach(button => {
                 button.addEventListener('click', function() {
                     const ayatNumber = this.getAttribute('data-ayat');
                     const audio = document.querySelector(`.verse-audio[data-ayat="${ayatNumber}"]`);
 
                     if (audio) {
-                        // Stop current playing audio if there's any
                         if (currentAudio && !currentAudio.paused) {
                             currentAudio.pause();
                             currentAudio.currentTime = 0;
                         }
 
-                        // Play the new selected audio
                         currentAudio = audio;
                         audio.play();
 
-                        // Menambahkan kelas 'playing' untuk memberi efek visual pada ayat yang diputar
                         const verseContainer = document.querySelector(
                         `[data-ayat="${ayatNumber}"]`);
                         document.querySelectorAll('.verse-container').forEach(container => {
@@ -303,7 +295,6 @@
                         });
                         verseContainer.classList.add('playing');
 
-                        // Scroll ke ayat yang sedang diputar
                         verseContainer.scrollIntoView({
                             behavior: 'smooth',
                             block: 'center'

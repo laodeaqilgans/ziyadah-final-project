@@ -22,12 +22,17 @@ class SantriController extends Controller
     public function create()
     {
         // Data kamar untuk setiap kelas
-        $kelas7 = ['Edierne', 'Alquds', 'Astana', 'Riyadh', 'Almeria', 'Iskandariah', 'Aleppo', 'Asqalan'];
-        $kelas8 = ['Kairo', 'Beirut', 'Doha', 'Baghdad', 'Sanaa', 'Gaza'];
-        $kelas9 = ['Cordoba', 'Kazan', 'Sevilla', 'Istanbul', 'Vienna', 'Andalusia', 'Albania'];
+        $kelas7A = ['Edierne', 'Alquds', 'Astana', 'Riyadh', 'Almeria', 'Iskandariah', 'Aleppo', 'Asqalan'];
+        $kelas7B = ['Edierne', 'Alquds', 'Astana', 'Riyadh', 'Almeria', 'Iskandariah', 'Aleppo', 'Asqalan'];
+        $kelas8A = ['Kairo', 'Beirut', 'Doha', 'Baghdad', 'Sanaa', 'Gaza'];
+        $kelas8B = ['Kairo', 'Beirut', 'Doha', 'Baghdad', 'Sanaa', 'Gaza'];
+        $kelas9A = ['Cordoba', 'Kazan', 'Sevilla', 'Istanbul', 'Vienna', 'Andalusia', 'Albania'];
+        $kelas9B = ['Cordoba', 'Kazan', 'Sevilla', 'Istanbul', 'Vienna', 'Andalusia', 'Albania'];
     
-        return view('santri.create', compact('kelas7', 'kelas8', 'kelas9'));
+        // Kirimkan variabel ke view dengan nama yang benar
+        return view('santri.create', compact('kelas7A', 'kelas7B', 'kelas8A', 'kelas8B', 'kelas9A', 'kelas9B'));
     }
+        
 
     // Menyimpan data santri
     public function store(Request $request)

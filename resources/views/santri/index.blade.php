@@ -4,35 +4,29 @@
 
 @section('content')
     <div class="container">
-        <h1 class="mb-5 mt-5 text-center">Daftar Santri</h1>
+        <h1 class="mb-5 mt-5 text-center text-primary">Daftar Santri</h1>
 
         <div class="container my-5">
             <!-- Card Gambar di atas Tabel -->
-            <div class="card mb-4">
+            <div class="card mb-4 shadow-sm">
                 <img src="{{ asset('images/masjid.jpg') }}" class="card-img-top" alt="Ziyadah Image"
                     style="height: 220px; object-fit: cover;">
                 <div class="card-body">
-                    <h5 class="card-title">Santri</h5>
-                    <p class="card-text">Bagi seorang santri, Ziyadah atau setoran hafalan merupakan bagian penting dalam
-                        menjaga dan memperkuat hafalan Al-Qur'an. Setiap hari, mereka berusaha untuk menjaga hafalan agar
-                        tetap
-                        terjaga dan semakin berkembang. Selain menjadi bagian dari pendidikan agama, Ziyadah juga menjadi
-                        ibadah
-                        yang mendekatkan diri kepada Allah. Melalui kegiatan ini, santri tidak hanya memperdalam ilmu agama,
-                        tetapi juga membentuk diri menjadi pribadi yang lebih baik.</p>
+                    <h5 class="card-title text-center">Ziyadah Bagi Para Santri</h5>
+                    <p class="card-text">Ziyadah atau setoran hafalan merupakan bagian penting dalam menjaga dan memperkuat hafalan Al-Qur'an. Santri berusaha menjaga hafalan agar tetap terjaga dan berkembang, serta mendekatkan diri kepada Allah.</p>
                 </div>
             </div>
 
-            <div class="card">
-                <div class="card-header">
-                    Semua Santri
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    Data Santri
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-bordered">
+                        <table class="table table-bordered table-striped">
                             <thead>
                                 <tr>
-                                    <th>Data Santri</th>
+                                    <th>Santri</th>
                                     <th>NIK</th>
                                     <th>Kamar</th>
                                     <th>Kelas</th>
@@ -182,12 +176,9 @@
                                                         </div>
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <!-- Tombol Simpan Perubahan -->
                                                         <button type="submit" class="btn btn-primary">Simpan
                                                             Perubahan</button>
-                                                        
 
-                                                        <!-- Tombol Hapus -->
                                                         <button type="button" class="btn btn-danger" data-bs-toggle="modal"
                                                             data-bs-target="#deleteSantriModal{{ $santri->id }}">
                                                             <i class="fas fa-trash"></i> Hapus
@@ -255,7 +246,6 @@
             const editForms = document.querySelectorAll('form');
             editForms.forEach(form => {
                 form.addEventListener('submit', function() {
-                    // Disable submit button to prevent double submission
                     const submitBtn = this.querySelector('button[type="submit"]');
                     if (submitBtn) {
                         submitBtn.disabled = true;
@@ -264,7 +254,6 @@
                 });
             });
 
-            // Show filename in file input
             const fileInputs = document.querySelectorAll('input[type="file"]');
             fileInputs.forEach(input => {
                 input.addEventListener('change', function(e) {

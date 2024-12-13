@@ -3,35 +3,33 @@
 @section('title', 'Detail Ziyadah')
 
 @section('content')
-    <div class="container">
-        <div class="text-center mb-4 mt-4">
-            <h1 class="h3 mb-5 mt-4 text-gray-800">Detail Ziyadah</h1>
+    <div class="container my-5">
+        <div class="text-center mb-5">
+            <h1 class="h3 mb-4 text-primary">Detail Ziyadah</h1>
         </div>
 
-        <div class="d-flex justify-content-between mb-4 mt-7">
-            <a href="{{ route('ziyadah.index') }}" class="btn btn-outline-secondary">
+        <div class="d-flex justify-content-between mb-4">
+            <a href="{{ route('ziyadah.index') }}" class="btn btn-outline-secondary shadow-sm">
                 <i class="fas fa-arrow-left me-2"></i>Kembali
             </a>
 
             <!-- Hapus Button -->
-            <form action="{{ route('ziyadah.destroy', $ziyadah->id) }}" method="POST"
-                onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?');">
+            <form action="{{ route('ziyadah.destroy', $ziyadah->id) }}" method="POST" id="deleteForm">
                 @csrf
                 @method('DELETE')
-                <button type="submit" class="btn btn-outline-danger">
+                <button type="button" class="btn btn-outline-danger shadow-sm" data-bs-toggle="modal"
+                    data-bs-target="#deleteModal">
                     <i class="fas fa-trash me-2"></i>Hapus
                 </button>
             </form>
         </div>
 
-
         <div class="row g-4">
             <!-- Informasi Santri -->
             <div class="col-lg-6">
-                <div class="card">
-                    <div class="card-header">
-                        <i class="fas fa-user me-2"></i>
-                        Informasi Santri
+                <div class="card shadow-sm">
+                    <div class="card-header bg-primary text-white">
+                        <i class="fas fa-user me-2"></i> Informasi Santri
                     </div>
                     <div class="card-body">
                         <div class="d-flex gap-4">
@@ -41,7 +39,7 @@
                                         alt="{{ $ziyadah->santri->nama_santri }}" class="profile-image">
                                 @else
                                     <div class="profile-placeholder">
-                                        <i class="fas fa-user fa-2x text-secondary"></i>
+                                        <i class="fas fa-user fa-3x text-secondary"></i>
                                     </div>
                                 @endif
                             </div>
@@ -72,7 +70,6 @@
                                             <span>{{ $ziyadah->santri->tanggal_lahir ? \Carbon\Carbon::parse($ziyadah->santri->tanggal_lahir)->format('d M Y') : '-' }}</span>
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
@@ -82,10 +79,9 @@
 
             <!-- Detail Ziyadah -->
             <div class="col-lg-6">
-                <div class="card">
-                    <div class="card-header">
-                        <i class="fas fa-book-open me-2"></i>
-                        Detail Ziyadah
+                <div class="card shadow-sm">
+                    <div class="card-header bg-primary text-white">
+                        <i class="fas fa-book-open me-2"></i> Detail Ziyadah
                     </div>
                     <div class="card-body">
                         <div class="row g-3 mb-4">
@@ -119,7 +115,7 @@
                             <p class="mb-0">{{ \Carbon\Carbon::parse($ziyadah->tanggal_ziyadah)->format('d M Y') }}</p>
                         </div>
 
-                        <button class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#editModal">
+                        <button class="btn btn-primary w-100 shadow-sm" data-bs-toggle="modal" data-bs-target="#editModal">
                             <i class="fas fa-edit me-2"></i>Edit Data
                         </button>
                     </div>
@@ -192,10 +188,82 @@
                 </div>
             </div>
         </div>
+
+        <!-- Delete Confirmation Modal -->
+        <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content modal-delete">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="deleteModalLabel">Konfirmasi Hapus Ziyadah</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Apakah Anda yakin ingin menghapus data Ziyadah ini?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+
+                        <!-- Form Delete -->
+                        <form action="{{ route('ziyadah.destroy', $ziyadah->id) }}" method="POST" style="display:inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">
+                                <i class="fas fa-trash"></i> Hapus
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     @push('styles')
         <link rel="stylesheet" href="{{ asset('css/ziyadah.css') }}">
+        <style>
+            .profile-image {
+                width: 80px;
+                height: 80px;
+                border-radius: 50%;
+                object-fit: cover;
+            }
+
+            .profile-placeholder {
+                width: 80px;
+                height: 80px;
+                border-radius: 50%;
+                background-color: #f0f0f0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .stat-card {
+                border: 1px solid #dee2e6;
+                padding: 20px;
+                text-align: center;
+                border-radius: 8px;
+                background-color: #f8f9fa;
+            }
+
+            .stat-value {
+                font-size: 1.25rem;
+                font-weight: bold;
+                color: #007bff;
+            }
+
+            .modal-content {
+                border-radius: 8px;
+            }
+
+            .btn-outline-danger:hover {
+                background-color: #f8d7da;
+            }
+
+            .btn-outline-secondary:hover {
+                background-color: #e2e6ea;
+            }
+        </style>
     @endpush
 
     @push('scripts')

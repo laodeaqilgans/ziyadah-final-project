@@ -11,7 +11,7 @@
 
         <title>@yield('title', 'Ziyadah')</title> <!-- Title default: Aplikasi Ziyadah Harian -->
 
-        <link rel="icon" href="{{ asset('images/bq-circle-2.png') }}" type="image/x-icon">
+        <link rel="icon" href="{{ asset('images/bq-circle-2.png') }}" sizes="192x192" type="image/png">
 
         <!-- Styles -->
         <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,700,800&display=swap" rel="stylesheet">

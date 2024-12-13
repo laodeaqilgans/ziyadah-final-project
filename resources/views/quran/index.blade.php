@@ -1,5 +1,7 @@
 @extends('template.template')
 
+@section('title', 'Al-Qur'an Digital')
+
 @section('content')
 
     <h1 class="mb-4 text-center mt-4">Al-Qur'an Digital</h1>
@@ -41,10 +43,10 @@
                                     <span class="badge bg-primary">{{ $surah['nomor'] }}</span>
                                 </div>
 
-                                <p class="card-text">{{ $surah['arti'] }}</p>
+                                <p class="card-text flex-grow-1 mb-4">{{ $surah['arti'] }}</p>
 
-                                <div class="mb-3">
-                                    <small class="text-muted">
+                                <div class="mb-3 text-muted">
+                                    <small>
                                         <i class="fas fa-map-marker-alt"></i> {{ $surah['tempatTurun'] }} |
                                         <i class="fas fa-book-open"></i> {{ $surah['jumlah_ayat'] }} Ayat
                                     </small>
@@ -64,8 +66,7 @@
                                     <a href="{{ route('quran.surah', $surah['nomor']) }}" class="btn btn-primary rounded-pill px-4 py-2">
                                         Baca Surah
                                     </a>
-                                    <a href="{{ route('quran.tafsir', $surah['nomor']) }}"
-                                        class="btn btn-outline-secondary rounded-pill px-4 py-2">
+                                    <a href="{{ route('quran.tafsir', $surah['nomor']) }}" class="btn btn-outline-secondary rounded-pill px-4 py-2">
                                         Tafsir
                                     </a>
                                 </div>
@@ -79,19 +80,22 @@
 
     <style>
         .card {
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .card:hover {
             transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
 
         .audio-player audio {
             max-width: 100%;
+            border-radius: 2rem;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
         }
 
         .badge {
-            font-size: 1rem;
+            font-size: 1.2rem;
             padding: 0.5rem 1rem;
         }
 
@@ -100,6 +104,19 @@
             flex-direction: column;
             justify-content: space-between;
             padding: 1.5rem;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .card-text {
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #555;
+            margin-bottom: 1rem;
         }
 
         .d-flex {
@@ -124,6 +141,10 @@
 
         .btn {
             font-size: 1rem;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
         }
 
         @media (max-width: 767px) {
